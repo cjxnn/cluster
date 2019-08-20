@@ -8,13 +8,15 @@ namespace clustering
 {
     class Kmeans {
         Data data;
+        int num_clusters;
         double[,] means;
         int[] clusters;
  
-        public Kmeans(Data data){
+        public Kmeans(Data data, int num_clusters){
             this.data = data;
+            this.num_clusters = num_clusters;
             clusters = new int[data.Num_points];
-            means = new double[data.Num_clusters,data.Dim];
+            means = new double[num_clusters,data.Dim];
         }
 
         public int[] Get_clusters()
@@ -37,20 +39,20 @@ namespace clustering
         { 
             Random random = new Random();
 
-            for (var i = 0; i < data.Num_clusters; i++) 
+            for (var i = 0; i < num_clusters; i++) 
                 clusters[i] = i;
 
-            for (var i = data.Num_clusters; i < data.Num_points; i++)
-                clusters[i] = random.Next(0, data.Num_clusters); 
+            for (var i = num_clusters; i < data.Num_points; i++)
+                clusters[i] = random.Next(0, num_clusters); 
         }
   
         private bool update_means()
         {
-            int[] clusterCounts = new int[data.Num_clusters];
+            int[] clusterCounts = new int[num_clusters];
             for (var i = 0; i < data.Num_points; i++)
                 clusterCounts[clusters[i]]++;
 
-            for (var i = 0; i < data.Num_clusters; i++)
+            for (var i = 0; i < num_clusters; i++)
                 if (clusterCounts[i] == 0)
                     return false;
 
@@ -58,7 +60,7 @@ namespace clustering
                 for (var j = 0; j < data.Dim; j++)
                     means[clusters[i],j] += data.Points[i,j];
 
-            for (var i = 0; i < data.Num_clusters; i++)
+            for (var i = 0; i < num_clusters; i++)
                 for (var j = 0; j < data.Dim; j++)
                     means[i,j] /= clusterCounts[i];
 
@@ -74,7 +76,7 @@ namespace clustering
                 int index_min = 0;
                 double dist;
 
-                for (var j = 0; j < data.Num_clusters; j++){
+                for (var j = 0; j < num_clusters; j++){
                     dist = 0.0;
                     for (var k = 0; k < data.Dim; k++)
                         dist += Math.Pow((data.Points[i,k] - means[j,k]), 2);

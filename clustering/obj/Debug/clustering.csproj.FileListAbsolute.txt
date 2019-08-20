@@ -31,6 +31,6 @@ C:\Users\Nx310\Desktop\gui\clustering\obj\Debug\clustering.pdb
 C:\Users\Nx310\Desktop\gui\clustering\bin\Debug\clustering.exe
 C:\Users\Nx310\Desktop\gui\clustering\bin\Debug\clustering.pdb
 C:\Users\Nx310\Desktop\gui\clustering\obj\Debug\clustering.csprojResolveAssemblyReference.cache
-C:\Users\Nx310\Desktop\gui\clustering\obj\Debug\clustering.Form1.resources
 C:\Users\Nx310\Desktop\gui\clustering\obj\Debug\clustering.Properties.Resources.resources
 C:\Users\Nx310\Desktop\gui\clustering\obj\Debug\clustering.csproj.GenerateResource.Cache
+C:\Users\Nx310\Desktop\gui\clustering\obj\Debug\clustering.Form_main.resources

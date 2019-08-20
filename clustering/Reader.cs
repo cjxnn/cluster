@@ -24,7 +24,7 @@ namespace clustering
                     points[i-1, j] = coordinates[j];
             }
 
-            return new Data(metadata[0], metadata[1], metadata[2], metadata[3], metadata[4] == 1, points);
+            return new Data(metadata[0], metadata[1], metadata[2], metadata[3] == 1, points);
         }
     }
 }

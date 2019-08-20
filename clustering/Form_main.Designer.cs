@@ -2,7 +2,7 @@
 
 namespace clustering
 {
-    partial class Form1
+    partial class Form_main
     {
         /// <summary>
         /// Required designer variable.
@@ -46,12 +46,14 @@ namespace clustering
             this.open_file_btn = new System.Windows.Forms.Button();
             this.Load_file_btn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.num_cluster_txtbox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(349, 252);
+            this.radioButton4.Location = new System.Drawing.Point(162, 250);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(119, 17);
             this.radioButton4.TabIndex = 42;
@@ -62,7 +64,7 @@ namespace clustering
             // radioButton5
             // 
             this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(349, 229);
+            this.radioButton5.Location = new System.Drawing.Point(162, 227);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(98, 17);
             this.radioButton5.TabIndex = 41;
@@ -73,7 +75,7 @@ namespace clustering
             // radioButton6
             // 
             this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(349, 206);
+            this.radioButton6.Location = new System.Drawing.Point(162, 204);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(115, 17);
             this.radioButton6.TabIndex = 40;
@@ -85,16 +87,16 @@ namespace clustering
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.SystemColors.Info;
-            this.label7.Location = new System.Drawing.Point(346, 181);
+            this.label7.Location = new System.Drawing.Point(159, 172);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(182, 13);
+            this.label7.Size = new System.Drawing.Size(133, 13);
             this.label7.TabIndex = 39;
-            this.label7.Text = "Select a similarity measuring function:";
+            this.label7.Text = "Select a similarity measure:";
             // 
             // chamelon_cb
             // 
             this.chamelon_cb.AutoSize = true;
-            this.chamelon_cb.Location = new System.Drawing.Point(178, 243);
+            this.chamelon_cb.Location = new System.Drawing.Point(47, 251);
             this.chamelon_cb.Name = "chamelon_cb";
             this.chamelon_cb.Size = new System.Drawing.Size(73, 17);
             this.chamelon_cb.TabIndex = 38;
@@ -104,7 +106,7 @@ namespace clustering
             // kmeans_cb
             // 
             this.kmeans_cb.AutoSize = true;
-            this.kmeans_cb.Location = new System.Drawing.Point(178, 197);
+            this.kmeans_cb.Location = new System.Drawing.Point(47, 205);
             this.kmeans_cb.Name = "kmeans_cb";
             this.kmeans_cb.Size = new System.Drawing.Size(67, 17);
             this.kmeans_cb.TabIndex = 34;
@@ -114,7 +116,7 @@ namespace clustering
             // dbscan_cb
             // 
             this.dbscan_cb.AutoSize = true;
-            this.dbscan_cb.Location = new System.Drawing.Point(178, 220);
+            this.dbscan_cb.Location = new System.Drawing.Point(47, 228);
             this.dbscan_cb.Name = "dbscan_cb";
             this.dbscan_cb.Size = new System.Drawing.Size(66, 17);
             this.dbscan_cb.TabIndex = 35;
@@ -124,7 +126,7 @@ namespace clustering
             // gmm_cb
             // 
             this.gmm_cb.AutoSize = true;
-            this.gmm_cb.Location = new System.Drawing.Point(178, 266);
+            this.gmm_cb.Location = new System.Drawing.Point(47, 274);
             this.gmm_cb.Name = "gmm_cb";
             this.gmm_cb.Size = new System.Drawing.Size(52, 17);
             this.gmm_cb.TabIndex = 36;
@@ -133,7 +135,7 @@ namespace clustering
             // 
             // run_btn
             // 
-            this.run_btn.Location = new System.Drawing.Point(260, 298);
+            this.run_btn.Location = new System.Drawing.Point(402, 304);
             this.run_btn.Name = "run_btn";
             this.run_btn.Size = new System.Drawing.Size(75, 23);
             this.run_btn.TabIndex = 37;
@@ -147,9 +149,9 @@ namespace clustering
             this.label8.BackColor = System.Drawing.SystemColors.Info;
             this.label8.Location = new System.Drawing.Point(44, 172);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(133, 13);
+            this.label8.Size = new System.Drawing.Size(100, 13);
             this.label8.TabIndex = 33;
-            this.label8.Text = "Please select an algorithm:\r\n";
+            this.label8.Text = "Select an algorithm:\r\n";
             // 
             // clear_file_btn
             // 
@@ -199,11 +201,30 @@ namespace clustering
             this.label2.TabIndex = 29;
             this.label2.Text = "Please upload a file";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Info;
+            this.label1.Location = new System.Drawing.Point(310, 172);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 13);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "Number of clusters:";
+            // 
+            // num_cluster_txtbox
+            // 
+            this.num_cluster_txtbox.Location = new System.Drawing.Point(313, 203);
+            this.num_cluster_txtbox.Name = "num_cluster_txtbox";
+            this.num_cluster_txtbox.Size = new System.Drawing.Size(100, 20);
+            this.num_cluster_txtbox.TabIndex = 44;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(612, 351);
+            this.Controls.Add(this.num_cluster_txtbox);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.radioButton4);
             this.Controls.Add(this.radioButton5);
             this.Controls.Add(this.radioButton6);
@@ -260,6 +281,8 @@ namespace clustering
         private System.Windows.Forms.Button open_file_btn;
         private System.Windows.Forms.Button Load_file_btn;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox num_cluster_txtbox;
     }
 }
 

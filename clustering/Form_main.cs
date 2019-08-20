@@ -17,13 +17,13 @@ using System.Security;
 
 namespace clustering
 {
-    public partial class Form1 : Form
+    public partial class Form_main : Form
     {
         private Reader reader = new Reader();
         private Writer writer = new Writer();
         private Data data;
 
-        public Form1()
+        public Form_main()
         {
             InitializeComponent();
         }
@@ -70,8 +70,9 @@ namespace clustering
 
         private void run_btn_Click(object sender, EventArgs e)
         {
+            var num_clusters = Int32.Parse(num_cluster_txtbox.Text);
             if (kmeans_cb.Checked) {
-                var kmeans = new Kmeans(data);
+                var kmeans = new Kmeans(data, num_clusters);
                 var clusters = kmeans.Get_clusters();
                 var path_out = Path.Combine(Path.GetDirectoryName(path_textbox.Text), "kmeans.txt");
                 writer.write_data(data, clusters, path_out);
