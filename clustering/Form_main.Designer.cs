@@ -217,8 +217,9 @@ namespace clustering
             this.num_cluster_txtbox.Name = "num_cluster_txtbox";
             this.num_cluster_txtbox.Size = new System.Drawing.Size(100, 20);
             this.num_cluster_txtbox.TabIndex = 44;
+            this.num_cluster_txtbox.Text = "2";
             // 
-            // Form1
+            // Form_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -240,7 +241,7 @@ namespace clustering
             this.Controls.Add(this.open_file_btn);
             this.Controls.Add(this.Load_file_btn);
             this.Controls.Add(this.label2);
-            this.Name = "Form1";
+            this.Name = "Form_main";
             this.Text = "Home";
             this.ResumeLayout(false);
             this.PerformLayout();

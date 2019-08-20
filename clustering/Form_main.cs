@@ -71,12 +71,58 @@ namespace clustering
         private void run_btn_Click(object sender, EventArgs e)
         {
             var num_clusters = Int32.Parse(num_cluster_txtbox.Text);
-            if (kmeans_cb.Checked) {
+            if (kmeans_cb.Checked)
+            {
                 var kmeans = new Kmeans(data, num_clusters);
                 var clusters = kmeans.Get_clusters();
-                var path_out = Path.Combine(Path.GetDirectoryName(path_textbox.Text), "kmeans.txt");
-                writer.write_data(data, clusters, path_out);
+                visualise(data.Points, clusters);
+                //var path_out = Path.Combine(Path.GetDirectoryName(path_textbox.Text), "kmeans.txt");
+                //writer.write_data(data, clusters, path_out);
             }
+        }
+
+        private void visualise(double [,] points, int[] clusters) {
+            var form_vis = new Form_visual();
+            form_vis.Show();
+
+            Brush[] brushes = { Brushes.Black, Brushes.LimeGreen, Brushes.Blue, Brushes.Orange, Brushes.Red, Brushes.Violet, Brushes.Turquoise };
+            Graphics g = form_vis.CreateGraphics();
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+
+            var max_h = form_vis.ClientSize.Height;
+            var max_w = form_vis.ClientSize.Width;
+            var h_margin = max_h * .05;
+            var w_margin = max_w * .05;
+            var h_span = max_h * .9;
+            var w_span = max_w * .9;
+
+            var num = points.GetLength(0);
+
+            var h_min = Double.MaxValue;
+            var h_max = 0.0;
+            var w_min = Double.MaxValue;
+            var w_max = 0.0;
+
+            for (var i = 0; i < num; i++) {
+                if (points[i, 0] < w_min)
+                    w_min = points[i, 0];
+                if (points[i, 1] < h_min)
+                    h_min = points[i, 1];
+                if (points[i, 0] > w_max)
+                    w_max = points[i, 0];
+                if (points[i, 1] > h_max)
+                    h_max = points[i, 1];
+            }
+            var h_len = h_max - h_min;
+            var w_len = w_max - w_min;
+
+            for (var i = 0; i < num; i++)
+            {
+                var p_w = (points[i, 0] - w_min) * w_span / w_len + w_margin;
+                var p_h = (points[i, 1] - h_min) * h_span / h_len + h_margin;
+                Point pPosition = new Point((int)p_w, (int)p_h);
+                g.FillEllipse(brushes[clusters[i]], new RectangleF(pPosition, new Size(6, 6)));
+            }  
         }
     }
 }

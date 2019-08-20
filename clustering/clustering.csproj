@@ -53,6 +53,12 @@
     <Compile Include="Form_main.Designer.cs">
       <DependentUpon>Form_main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_visual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_visual.Designer.cs">
+      <DependentUpon>Form_visual.cs</DependentUpon>
+    </Compile>
     <Compile Include="Kmeans.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,6 +66,9 @@
     <Compile Include="Writer.cs" />
     <EmbeddedResource Include="Form_main.resx">
       <DependentUpon>Form_main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_visual.resx">
+      <DependentUpon>Form_visual.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
