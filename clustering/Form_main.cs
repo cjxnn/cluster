@@ -74,14 +74,15 @@ namespace clustering
             if (kmeans_cb.Checked)
             {
                 var kmeans = new Kmeans(data, num_clusters);
-                var clusters = kmeans.Get_clusters();
-                visualise(data.Points, clusters);
-                //var path_out = Path.Combine(Path.GetDirectoryName(path_textbox.Text), "kmeans.txt");
-                //writer.write_data(data, clusters, path_out);
+                var result = kmeans.Get_clusters();
+                visualise(data.Points, result);
+                var path_out = Path.Combine(Path.GetDirectoryName(path_textbox.Text), "kmeans.txt");
+                writer.write_data(data, result.Clusters, path_out);
             }
         }
 
-        private void visualise(double [,] points, int[] clusters) {
+        private void visualise(double [,] points, Result result) {
+            // plot clusters in a new form
             var form_vis = new Form_visual();
             form_vis.Show();
 
@@ -89,6 +90,7 @@ namespace clustering
             Graphics g = form_vis.CreateGraphics();
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
+            // set available area
             var max_h = form_vis.ClientSize.Height;
             var max_w = form_vis.ClientSize.Width;
             var h_margin = max_h * .05;
@@ -96,14 +98,15 @@ namespace clustering
             var h_span = max_h * .9;
             var w_span = max_w * .9;
 
-            var num = points.GetLength(0);
+            var num_points = points.GetLength(0);
+            var num_clusters = result.Means.GetLength(0);
 
+            // normalise coordinates
             var h_min = Double.MaxValue;
             var h_max = 0.0;
             var w_min = Double.MaxValue;
             var w_max = 0.0;
-
-            for (var i = 0; i < num; i++) {
+            for (var i = 0; i < num_points; i++) {
                 if (points[i, 0] < w_min)
                     w_min = points[i, 0];
                 if (points[i, 1] < h_min)
@@ -116,13 +119,21 @@ namespace clustering
             var h_len = h_max - h_min;
             var w_len = w_max - w_min;
 
-            for (var i = 0; i < num; i++)
-            {
+            // plot clusters
+            for (var i = 0; i < num_points; i++) {
                 var p_w = (points[i, 0] - w_min) * w_span / w_len + w_margin;
                 var p_h = (points[i, 1] - h_min) * h_span / h_len + h_margin;
                 Point pPosition = new Point((int)p_w, (int)p_h);
-                g.FillEllipse(brushes[clusters[i]], new RectangleF(pPosition, new Size(6, 6)));
-            }  
+                g.FillEllipse(brushes[result.Clusters[i]], new RectangleF(pPosition, new Size(5, 5)));
+            }
+
+            // plot centroids
+            for (var i = 0; i < num_clusters; i++) {
+                var c_w = (result.Means[i, 0] - w_min) * w_span / w_len + w_margin;
+                var c_h = (result.Means[i, 1] - h_min) * h_span / h_len + h_margin;
+                Point pPosition = new Point((int)c_w, (int)c_h);
+                g.FillEllipse(brushes[i], new RectangleF(pPosition, new Size(11, 11)));
+            }
         }
     }
 }

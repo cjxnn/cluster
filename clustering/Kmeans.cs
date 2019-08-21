@@ -19,7 +19,7 @@ namespace clustering
             means = new double[num_clusters,data.Dim];
         }
 
-        public int[] Get_clusters()
+        public Result Get_clusters()
         { 
             initialise();
 
@@ -32,7 +32,7 @@ namespace clustering
                 success = update_means();
                 changed = update_clusters();
             }
-            return clusters;
+            return new Result(clusters, means);
         }
 
         private void initialise()
