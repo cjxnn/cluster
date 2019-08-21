@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace clustering
 {
-    class Result
+    public class Result
     {
         public readonly int[] Clusters;
         public readonly double[,] Means;
